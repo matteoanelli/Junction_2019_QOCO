@@ -252,11 +252,13 @@
         $(".messages").animate({scrollTop: $(document).height()}, "fast");
     }
 
+
     //TRX
+    let curr_state = ''
     let states = {
-        welcome: 'Dear Mikko. Qoco bot is here to support you 😄',
-        intro_belt:'Welcome to HEL belt 2, we are currently dropping the baggages from:<br> Berlin Tegel and Rome Fiumicino.' +
-            ' <br> Which problem did you encounter with your luggage?',
+        welcome: {s:'Dear Mikko. Qoco bot is here to support you 😄',n:''},
+        intro_belt:{s:'Welcome to HEL belt 2, we are currently dropping the baggages from:<br> Berlin Tegel and Rome Fiumicino.' +
+            ' <br> Which problem did you encounter with your luggage?',n:''},
         intro_default: 'We encountered some problems in the baggage delivery. What do you prefer?',
         damaged: 'Our system detected that your baggage has been damaged in your flight TRX-HEL. We apologise for the incovenience.',
         missing: 'Our system detected that your baggage delivery has been delayed. We apologise for the incovenience.',
@@ -274,7 +276,7 @@
         if (usr_msg.includes('support')) {
             newMessageReply(states.support)
         } else if (usr_msg.includes('position')) {
-            newMessageReply(states.position)
+            newImageReply()
         } else {
             newMessageReply(states.conclusion)
         }
@@ -286,10 +288,23 @@
             return false;
         }
         $('<li class="sent"><img src="./static/images/botico.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-        // $('.message-input input').val(null);
+        $('.message-input input').val(null);
         $('.contact.active .preview').html('<span>You: </span>' + message);
         $(".messages").animate({scrollTop: $(document).height()}, "fast");
     }
+
+
+    function newImageReply() {
+        if ($.trim(message) == '') {
+            return false;
+        }
+        message = `<img class="image-message" src="./static/images/airmap.jpg" alt="map" />`
+        $('<li class="sent"><img src="./static/images/botico.png" alt="" /><p class="image-p">' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        $(".messages").animate({scrollTop: $(document).height()}, "fast");
+    }
+
 
     // on click in the submit button
     $('.submit').click(function () {
@@ -319,7 +334,7 @@
     $(document).ready(function () {
         setTimeout(function () {
 
-            if (!params.belt) newMessageReply(states.welcome);
+            if (!params.belt) newMessageReply(states.welcome.s);
             setTimeout(function () {
                 switch (params.problem) {
                     case 'damaged':
