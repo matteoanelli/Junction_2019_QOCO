@@ -250,37 +250,52 @@
         $('.message-input input').val(null);
         $('.contact.active .preview').html('<span>You: </span>' + message);
         $(".messages").animate({scrollTop: $(document).height()}, "fast");
+        return message;
     }
 
 
     //TRX
-    let curr_state = ''
+    let curr_state = '';
     let states = {
         welcome: {s:'Dear Mikko. Qoco bot is here to support you 😄',n:''},
         intro_belt:{s:'Welcome to HEL belt 2, we are currently dropping the baggages from:<br> Berlin Tegel and Rome Fiumicino.' +
             ' <br> Which problem did you encounter with your luggage?',n:''},
         intro_default: 'We encountered some problems in the baggage delivery. What do you prefer?',
-        damaged: 'Our system detected that your baggage has been damaged in your flight TRX-HEL. We apologise for the incovenience.',
-        missing: 'Our system detected that your baggage delivery has been delayed. We apologise for the incovenience.',
+        damaged: 'Our system detected that your baggage has been damaged in your flight TRX-HEL. We apologise for the inconvenience.',
+        missing: 'Our system detected that your baggage delivery has been delayed. We apologise for the inconvenience.',
         location_q: 'Are you in Helsinki Vantaa at the moment?',
         support: 'If you want to speak to the support call the +39721827481',
         support_yes: 'Thank you for your patience!',
-        position: 'Here\'s the location of the closest infopoint in HEL',
-        conclusion: 'Thank you, goodbye'
+        position: 'Here\'s the location of the closest info-point in HEL',
+        conclusion: {s:'You are welcome!',n:''},
+        intro_ref_num:{s:'Welcome to QOCO Assistant. Please text us your baggage reference number from the baggage claim ticket you received during check in.',n:'sorry_broken'},
+        sorry_broken:{s:'Hello Mr. Mikko, we are sorry to hear your luggage was damaged, could you text us the issue? (broken wheel, cracked suitcase, broken handle, belt missing)',n:'broken'},
+        broken:{s:"Sorry for the inconvenience, in this case you have the possibility to get a refund. Please follow the map to describe the issue further to our customer service area.",n:"map"}
     };
 
 
     function replyManager(usr_msg) {
         usr_msg = usr_msg.toString();
         console.log(usr_msg);
-        if (usr_msg.includes('support')) {
-            newMessageReply(states.support)
-        } else if (usr_msg.includes('position')) {
-            newImageReply()
-        } else {
-            newMessageReply(states.conclusion)
-        }
 
+        if (params.belt && curr_state !== ''){
+            newMessageReply(states[curr_state].s);
+            curr_state = states[curr_state].n;
+            if (curr_state === 'map'){
+                newImageReply();
+                curr_state = 'conclusion';
+            }
+        }
+        else {
+            if (usr_msg.includes('support')) {
+                newMessageReply(states.support)
+            } else if (usr_msg.includes('position')) {
+                newMessageReply(states.position);
+                newImageReply()
+            } else {
+                newMessageReply(states.conclusion.s)
+            }
+        }
     }
 
     function newMessageReply(message) {
@@ -308,24 +323,26 @@
 
     // on click in the submit button
     $('.submit').click(function () {
-        let message = $(".message-input input").val().toString().toLowerCase();
-        newMessageUser();
-        setTimeout(function () {
-            replyManager(message);
+        let message = newMessageUser();
+        if (message !== false){
+            setTimeout(function () {
+                replyManager(message);
 
-        }, getRandomInt(1000, 2000));
+            }, getRandomInt(1000, 2000));
+        }
 
     });
 
     // press Enter key
     $(window).on('keydown', function (e) {
         if (e.which == 13) {
-            let message = $(".message-input input").val();
-            newMessageUser();
-            setTimeout(function () {
-                replyManager(message);
+            let message = newMessageUser();
+            if (message !== false){
+                setTimeout(function () {
+                    replyManager(message);
 
-            }, getRandomInt(1000, 2000));
+                }, getRandomInt(1000, 2000));
+            }
             return false;
         }
     });
@@ -334,23 +351,27 @@
     $(document).ready(function () {
         setTimeout(function () {
 
-            if (!params.belt) newMessageReply(states.welcome.s);
+            if (!params.belt) {newMessageReply(states.welcome.s);}
+
             setTimeout(function () {
-                switch (params.problem) {
-                    case 'damaged':
-                        newMessageReply(states.damaged);
-                        break;
-                    case 'missing':
-                        newMessageReply(states.missing);
-                        break;
-                    default:
-                        if (params.belt){
-                            newMessageReply(states.intro_belt);
-                        }
-                        else {
-                            newMessageReply(states.intro_default);
-                        }
+                if (params.belt){
+                    newMessageReply(states.intro_ref_num.s);
+                    curr_state = states.intro_ref_num.n
+
                 }
+                if(params.problem){
+                    switch (params.problem) {
+                        case 'damaged':
+                            newMessageReply(states.damaged);
+                            break;
+                        case 'missing':
+                            newMessageReply(states.missing);
+                            break;
+                        default:
+                            newMessageReply(states.intro_default);
+                    }
+                }
+
 
 
             }, getRandomInt(500, 1000));
