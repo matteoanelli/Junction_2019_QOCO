@@ -1,5 +1,4 @@
-# Junction_2019_QOCO
+# QOCO Challenge - Junction 2019
 Junction Project
 
-
-Adam is here
+The team is still working on it...
