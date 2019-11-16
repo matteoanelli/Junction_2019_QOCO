@@ -11,7 +11,7 @@ html = open("message.html")
 msg = MIMEText(html.read(), 'html')
 msg['From'] = sender_email
 msg['To'] = receiver_email
-msg['Subject'] = "Automatic Weekly Report"
+msg['Subject'] = "Appologies from your boys at Ryanair 8=======D~~~~~~~"
 
 debug = False
 if debug:
