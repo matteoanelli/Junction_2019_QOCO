@@ -1,0 +1,412 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css3">-->
+<!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+<!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!DOCTYPE html>
+<html class='' lang="en">
+<head>
+    <!-- <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script> -->
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"/>
+    <link rel="mask-icon" type=""
+          href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg"
+          color="#111"/>
+    <link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet'
+          type='text/css'>
+
+    <script src="https://use.typekit.net/hoy3lrg.js"></script>
+    <script>try {
+        Typekit.load({async: true});
+    } catch (e) {
+    }</script>
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+    <link rel='stylesheet prefetch'
+          href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+    <link href="{{ url_for('static',filename='css/chatbot.css') }}" rel='stylesheet' type='text/css'>
+    <!--<link  href="./chatbot.css" rel='stylesheet' type='text/css'>-->
+</head>
+<body>
+
+<div id="frame">
+    <!-- 	<div id="sidepanel">
+            <div id="profile">
+                <div class="wrap">
+                    <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
+                    <p>Mike Ross</p>
+                    <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
+                    <div id="status-options">
+                        <ul>
+                            <li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
+                            <li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
+                            <li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
+                            <li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
+                        </ul>
+                    </div>
+                    <div id="expanded">
+                        <label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
+                        <input name="twitter" type="text" value="mikeross" />
+                        <label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
+                        <input name="twitter" type="text" value="ross81" />
+                        <label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
+                        <input name="twitter" type="text" value="mike.ross" />
+                    </div>
+                </div>
+            </div>
+            <div id="search">
+                <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
+                <input type="text" placeholder="Search contacts..." />
+            </div>
+            <div id="contacts">
+                <ul>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status online"></span>
+                            <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Louis Litt</p>
+                                <p class="preview">You just got LITT up, Mike.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact active">
+                        <div class="wrap">
+                            <span class="contact-status busy"></span>
+                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Harvey Specter</p>
+                                <p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status away"></span>
+                            <img src="http://emilcarlsson.se/assets/rachelzane.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Rachel Zane</p>
+                                <p class="preview">I was thinking that we could have chicken tonight, sounds good?</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status online"></span>
+                            <img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Donna Paulsen</p>
+                                <p class="preview">Mike, I know everything! I'm Donna..</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status busy"></span>
+                            <img src="http://emilcarlsson.se/assets/jessicapearson.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Jessica Pearson</p>
+                                <p class="preview">Have you finished the draft on the Hinsenburg deal?</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status"></span>
+                            <img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Harold Gunderson</p>
+                                <p class="preview">Thanks Mike! :)</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status"></span>
+                            <img src="http://emilcarlsson.se/assets/danielhardman.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Daniel Hardman</p>
+                                <p class="preview">We'll meet again, Mike. Tell Jessica I said 'Hi'.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status busy"></span>
+                            <img src="http://emilcarlsson.se/assets/katrinabennett.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Katrina Bennett</p>
+                                <p class="preview">I've sent you the files for the Garrett trial.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status"></span>
+                            <img src="http://emilcarlsson.se/assets/charlesforstman.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Charles Forstman</p>
+                                <p class="preview">Mike, this isn't over.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="contact">
+                        <div class="wrap">
+                            <span class="contact-status"></span>
+                            <img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
+                            <div class="meta">
+                                <p class="name">Jonathan Sidwell</p>
+                                <p class="preview"><span>You:</span> That's bullshit. This deal is solid.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="bottom-bar">
+                <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+                <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+            </div>
+        </div> -->
+    <div class="content">
+        <div class="contact-profile">
+            <img src="./static/images/botico.png" alt="">
+            <p>QOCO Assistant</p>
+            <div class="social-media">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="messages">
+            <ul>
+            </ul>
+        </div>
+        <div class="message-input">
+            <div class="wrap">
+                <input type="text" placeholder="Write your message..."/>
+                <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+                <button class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script> -->
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script src='./static/js/utils.js'></script>
+<script>
+    var params = getParameters();
+    $(".messages").animate({scrollTop: $(document).height()}, "fast");
+
+    $("#profile-img").click(function () {
+        $("#status-options").toggleClass("active");
+    });
+
+    $(".expand-button").click(function () {
+        $("#profile").toggleClass("expanded");
+        $("#contacts").toggleClass("expanded");
+    });
+
+    $("#status-options ul li").click(function () {
+        $("#profile-img").removeClass();
+        $("#status-online").removeClass("active");
+        $("#status-away").removeClass("active");
+        $("#status-busy").removeClass("active");
+        $("#status-offline").removeClass("active");
+        $(this).addClass("active");
+
+        if ($("#status-online").hasClass("active")) {
+            $("#profile-img").addClass("online");
+        } else if ($("#status-away").hasClass("active")) {
+            $("#profile-img").addClass("away");
+        } else if ($("#status-busy").hasClass("active")) {
+            $("#profile-img").addClass("busy");
+        } else if ($("#status-offline").hasClass("active")) {
+            $("#profile-img").addClass("offline");
+        } else {
+            $("#profile-img").removeClass();
+        }
+
+        $("#status-options").removeClass("active");
+    });
+
+
+    function newMessageUser() {
+        message = $(".message-input input").val();
+        if ($.trim(message) == '') {
+            return false;
+        }
+        $('<li class="replies"><img src="./static/images/user-icon.png" alt="Mikko" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        $(".messages").animate({scrollTop: $(document).height()}, "fast");
+        return message;
+    }
+
+
+    //TRX
+    let curr_state = '';
+    let states = {
+        welcome: {s:'Dear Mikko. Qoco bot is here to support you 😄',n:''},
+        intro_belt:{s:'Welcome to HEL belt 2, we are currently dropping the baggages from:<br> Berlin Tegel and Rome Fiumicino.' +
+            ' <br> Which problem did you encounter with your luggage?',n:''},
+        intro_default: 'We encountered some problems in the baggage delivery. What do you prefer?',
+        damaged: 'Our system detected that your baggage has been damaged in your flight TRX-HEL. We apologise for the inconvenience.',
+        missing: 'Our system detected that your baggage delivery has been delayed. We apologise for the inconvenience.',
+        location_q: 'Are you in Helsinki Vantaa at the moment?',
+        support: 'If you want to speak to the support call the +39721827481',
+        support_yes: 'Thank you for your patience!',
+        position: 'Here\'s the location of the closest info-point in HEL',
+        conclusion: {s:'You are welcome!',n:''},
+        intro_ref_num:{s:'Welcome to QOCO Assistant. Please text us your baggage reference number from the baggage claim ticket you received during check in.',n:'sorry_broken'},
+        sorry_broken:{s:'Hello Mr. Mikko, we are sorry to hear your luggage was damaged, could you text us the issue? (broken wheel, cracked suitcase, broken handle, belt missing)',n:'broken'},
+        broken:{s:"Sorry for the inconvenience, in this case you have the possibility to get a refund. Please follow the map to describe the issue further to our customer service area.",n:"map"}
+    };
+
+
+    function replyManager(usr_msg) {
+        usr_msg = usr_msg.toString();
+        console.log(usr_msg);
+
+        if (params.belt && curr_state !== ''){
+            newMessageReply(states[curr_state].s);
+            curr_state = states[curr_state].n;
+            if (curr_state === 'map'){
+                newImageReply();
+                curr_state = 'conclusion';
+            }
+        }
+        else {
+            if (usr_msg.includes('support')) {
+                newMessageReply(states.support)
+            } else if (usr_msg.includes('position')) {
+                newMessageReply(states.position);
+                newImageReply()
+            } else {
+                newMessageReply(states.conclusion.s)
+            }
+        }
+    }
+
+    function newMessageReply(message) {
+        if ($.trim(message) == '') {
+            return false;
+        }
+        $('<li class="sent"><img src="./static/images/botico.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        $(".messages").animate({scrollTop: $(document).height()}, "fast");
+    }
+
+
+    function newImageReply() {
+        if ($.trim(message) == '') {
+            return false;
+        }
+        message = `<img class="image-message" src="./static/images/airmap.jpg" alt="map" />`
+        $('<li class="sent"><img src="./static/images/botico.png" alt="" /><p class="image-p">' + message + '</p></li>').appendTo($('.messages ul'));
+        $('.message-input input').val(null);
+        $('.contact.active .preview').html('<span>You: </span>' + message);
+        $(".messages").animate({scrollTop: $(document).height()}, "fast");
+    }
+
+
+    // on click in the submit button
+    $('.submit').click(function () {
+        let message = newMessageUser();
+        if (message !== false){
+            setTimeout(function () {
+                replyManager(message);
+
+            }, getRandomInt(1000, 2000));
+        }
+
+    });
+
+    // press Enter key
+    $(window).on('keydown', function (e) {
+        if (e.which == 13) {
+            let message = newMessageUser();
+            if (message !== false){
+                setTimeout(function () {
+                    replyManager(message);
+
+                }, getRandomInt(1000, 2000));
+            }
+            return false;
+        }
+    });
+
+    // WELCOME MESSAGES
+    $(document).ready(function () {
+        setTimeout(function () {
+
+            if (!params.belt) {newMessageReply(states.welcome.s);}
+
+            setTimeout(function () {
+                if (params.belt){
+                    newMessageReply(states.intro_ref_num.s);
+                    curr_state = states.intro_ref_num.n
+
+                }
+                if(params.problem){
+                    switch (params.problem) {
+                        case 'damaged':
+                            newMessageReply(states.damaged);
+                            break;
+                        case 'missing':
+                            newMessageReply(states.missing);
+                            break;
+                        default:
+                            newMessageReply(states.intro_default);
+                    }
+                }
+
+
+
+            }, getRandomInt(500, 1000));
+
+        }, getRandomInt(1000, 2000));
+    });
+    //# sourceURL=pen.js
+</script>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>-->
+<!--<script type="text/javascript">-->
+<!--var socket = io.connect('http://' + document.domain + ':' + location.port);-->
+
+<!--socket.on( 'connect', function() {-->
+<!--socket.emit( 'my event', {-->
+<!--data: 'User Connected'-->
+<!--} );-->
+<!--var form = $( 'form' ).on( 'submit', function( e ) {-->
+<!--e.preventDefault();-->
+<!--let user_name = $( 'input.username' ).val();-->
+<!--let user_input = $('input.message').val();-->
+<!--socket.emit( 'my event', {-->
+<!--user_name : user_name,-->
+<!--message : user_input-->
+<!--} );-->
+<!--user_input.val( '' ).focus()-->
+<!--} )-->
+<!--} )-->
+<!--socket.on( 'my response', function( msg ) {-->
+<!--console.log( msg );-->
+<!--if( typeof msg.user_name !== 'undefined' ) {-->
+<!--$( 'h3' ).remove();-->
+<!--$( 'div.message_holder' ).append( '<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )-->
+<!--}-->
+<!--})-->
+<!--</script>-->
+</body>
+</html>

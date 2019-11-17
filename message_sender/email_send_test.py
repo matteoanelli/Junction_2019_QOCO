@@ -7,11 +7,11 @@ receiver_email = "baggagecustomer@gmail.com"
 password = "Abcd1234!" #input("Type your password and press enter:")
 
 
-html = open("message.html")
+html = open("new_message.html")
 msg = MIMEText(html.read(), 'html')
 msg['From'] = sender_email
 msg['To'] = receiver_email
-msg['Subject'] = "Automatic Weekly Report"
+msg['Subject'] = "Information about your luggage"
 
 debug = False
 if debug:
