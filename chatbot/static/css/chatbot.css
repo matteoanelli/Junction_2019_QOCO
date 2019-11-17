@@ -670,3 +670,16 @@ body {
 #frame .content .message-input .wrap button:focus {
   outline: none;
 }
+
+.image-p{
+    max-width: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background-color: #E6EAEA !important;
+}
+
+.image-message {
+    width: 75vw !important;
+    border-radius: 5% !important;
+    margin: 0 !important;
+}
