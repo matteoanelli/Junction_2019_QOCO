@@ -1,5 +1,5 @@
 Flask==0.12.2
 flask-socketio
-eventlet==0.17.4
+eventlet==0.31.0
 gunicorn==18.0.0
 
